@@ -21,7 +21,6 @@
 		F1A351E82AFC7C900024F854 /* DessertsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351E72AFC7C900024F854 /* DessertsFeedViewModel.swift */; };
 		F1A351EA2AFC82160024F854 /* DessertsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351E92AFC82160024F854 /* DessertsFeedView.swift */; };
 		F1A351EC2AFC83C10024F854 /* DessertPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351EB2AFC83C10024F854 /* DessertPreviewView.swift */; };
-		F1A351F22AFCB0FA0024F854 /* SwURL in Frameworks */ = {isa = PBXBuildFile; productRef = F1A351F12AFCB0FA0024F854 /* SwURL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A351F22AFCB0FA0024F854 /* SwURL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +197,6 @@
 			);
 			name = FetchDesserts;
 			packageProductDependencies = (
-				F1A351F12AFCB0FA0024F854 /* SwURL */,
 			);
 			productName = FetchDesserts;
 			productReference = F1A351AD2AFC36A30024F854 /* FetchDesserts.app */;
@@ -274,7 +271,6 @@
 			);
 			mainGroup = F1A351A42AFC36A30024F854;
 			packageReferences = (
-				F1A351F02AFCB0FA0024F854 /* XCRemoteSwiftPackageReference "SwURL" */,
 			);
 			productRefGroup = F1A351AE2AFC36A30024F854 /* Products */;
 			projectDirPath = "";
@@ -652,25 +648,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F1A351F02AFCB0FA0024F854 /* XCRemoteSwiftPackageReference "SwURL" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cmtrounce/SwURL.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F1A351F12AFCB0FA0024F854 /* SwURL */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F1A351F02AFCB0FA0024F854 /* XCRemoteSwiftPackageReference "SwURL" */;
-			productName = SwURL;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1A351A52AFC36A30024F854 /* Project object */;
 }

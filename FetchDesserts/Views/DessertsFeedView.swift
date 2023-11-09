@@ -11,14 +11,20 @@ struct DessertsFeedView: View {
     @StateObject var viewModel: DessertsFeedViewModel
     
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHStack {
-                ForEach(viewModel.feed) { dessertPreview in
-                    DessertPreviewView(dessertPreview: dessertPreview)
+        ZStack(alignment: .leading) {
+            Color.blue
+                .ignoresSafeArea()
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack {
+                    ForEach(viewModel.feed) { dessertPreview in
+                        DessertPreviewView(dessertPreview: dessertPreview)
+                            .padding(.horizontal, 2)
+                    }
                 }
             }
+            .frame(maxHeight: 400)
+            .padding(.horizontal)
         }
-        .padding()
         .onAppear {
             viewModel.loadDessertsFeed()
         }

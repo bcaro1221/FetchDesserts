@@ -6,20 +6,26 @@
 //
 
 import SwiftUI
-import SwURL
 
 struct DessertPreviewView: View {
     let dessertPreview: DessertPreview
     
     var body: some View {
         VStack {
-            if let url = dessertPreview.url {
-                SwURLImage(url: url, placeholderImage: Image(systemName: "photo"))
-                    .scaledToFit()
-                    .clipped()
-                    .frame(maxHeight: 200)
-            } else {
-                Image(systemName: "photo")
+            
+            // TODO: Find a suitable replacement library for Async Images
+            AsyncImage(url: dessertPreview.url) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .clipped()
+                } else if phase.error == nil {
+                    ProgressView()
+                        .padding()
+                } else {
+                    Image(systemName: "photo")
+                }
             }
             
             Text(dessertPreview.title)
