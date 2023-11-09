@@ -8,32 +8,60 @@
 import SwiftUI
 
 struct DessertsFeedView: View {
-    @StateObject var viewModel: DessertsFeedViewModel
+    @StateObject var feedViewModel: DessertsFeedViewModel
+    
+    @State var dessertViewModel: DessertViewModel?
     
     var body: some View {
         ZStack(alignment: .leading) {
             Color.blue
                 .ignoresSafeArea()
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack {
-                    ForEach(viewModel.feed) { dessertPreview in
-                        DessertPreviewView(dessertPreview: dessertPreview)
-                            .padding(.horizontal, 2)
+            VStack(alignment: .leading) {
+                Spacer()
+                Text("Fetch Desserts!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack {
+                        ForEach(feedViewModel.feed) { dessertPreview in
+                            DessertPreviewView(dessertPreview: dessertPreview)
+                                .frame(width: 200, height: 250)
+                                .padding(.horizontal, 1)
+                                .onTapGesture {
+                                    self.dessertViewModel = DessertViewModel(
+                                        withRepository: DessertsRepository(),
+                                        id: dessertPreview.id
+                                    )
+                                }
+                        }
                     }
                 }
+                .frame(maxHeight: 400)
             }
-            .frame(maxHeight: 400)
             .padding(.horizontal)
         }
         .onAppear {
-            viewModel.loadDessertsFeed()
+            feedViewModel.loadDessertsFeed()
+        }
+        .fullScreenCover(item: $dessertViewModel) { viewModel in
+            VStack {
+                Text("\(viewModel.id)")
+                Button {
+                    self.dessertViewModel = nil
+                } label: {
+                    Text("Dismiss")
+                }
+            }
+                .onAppear {
+                    viewModel.loadDessert()
+                }
         }
     }
 }
 
 #Preview {
     DessertsFeedView(
-        viewModel: DessertsFeedViewModel (
+        feedViewModel: DessertsFeedViewModel (
             withRepository: DessertsRepository()
         )
     )

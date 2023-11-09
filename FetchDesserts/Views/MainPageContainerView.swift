@@ -12,7 +12,7 @@ struct MainPageContainerView: View {
     var body: some View {
         VStack {
             DessertsFeedView(
-                viewModel: DessertsFeedViewModel(
+                feedViewModel: DessertsFeedViewModel(
                 withRepository: DessertsRepository()
             ))
         }

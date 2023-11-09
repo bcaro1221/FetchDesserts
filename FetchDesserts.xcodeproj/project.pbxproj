@@ -21,6 +21,7 @@
 		F1A351E82AFC7C900024F854 /* DessertsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351E72AFC7C900024F854 /* DessertsFeedViewModel.swift */; };
 		F1A351EA2AFC82160024F854 /* DessertsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351E92AFC82160024F854 /* DessertsFeedView.swift */; };
 		F1A351EC2AFC83C10024F854 /* DessertPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351EB2AFC83C10024F854 /* DessertPreviewView.swift */; };
+		F1A351F42AFD344F0024F854 /* DessertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351F32AFD344F0024F854 /* DessertViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		F1A351E72AFC7C900024F854 /* DessertsFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsFeedViewModel.swift; sourceTree = "<group>"; };
 		F1A351E92AFC82160024F854 /* DessertsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsFeedView.swift; sourceTree = "<group>"; };
 		F1A351EB2AFC83C10024F854 /* DessertPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertPreviewView.swift; sourceTree = "<group>"; };
+		F1A351F32AFD344F0024F854 /* DessertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				F1A351E72AFC7C900024F854 /* DessertsFeedViewModel.swift */,
+				F1A351F32AFD344F0024F854 /* DessertViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				F1A351DD2AFC390D0024F854 /* DessertsRepository.swift in Sources */,
 				F1A351E82AFC7C900024F854 /* DessertsFeedViewModel.swift in Sources */,
 				F1A351EA2AFC82160024F854 /* DessertsFeedView.swift in Sources */,
+				F1A351F42AFD344F0024F854 /* DessertViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
