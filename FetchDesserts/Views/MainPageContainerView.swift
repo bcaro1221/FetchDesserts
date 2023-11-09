@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainPageView: View {
+struct MainPageContainerView: View {
     
     var body: some View {
         VStack {
@@ -20,5 +20,5 @@ struct MainPageView: View {
 }
 
 #Preview {
-    MainPageView()
+    MainPageContainerView()
 }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F1A351B12AFC36A30024F854 /* FetchDessertsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351B02AFC36A30024F854 /* FetchDessertsApp.swift */; };
-		F1A351B32AFC36A30024F854 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351B22AFC36A30024F854 /* MainPageView.swift */; };
+		F1A351B32AFC36A30024F854 /* MainPageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351B22AFC36A30024F854 /* MainPageContainerView.swift */; };
 		F1A351B52AFC36A50024F854 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A351B42AFC36A50024F854 /* Assets.xcassets */; };
 		F1A351B82AFC36A50024F854 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A351B72AFC36A50024F854 /* Preview Assets.xcassets */; };
 		F1A351C22AFC36A50024F854 /* FetchDessertsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A351C12AFC36A50024F854 /* FetchDessertsTests.swift */; };
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		F1A351AD2AFC36A30024F854 /* FetchDesserts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchDesserts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A351B02AFC36A30024F854 /* FetchDessertsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDessertsApp.swift; sourceTree = "<group>"; };
-		F1A351B22AFC36A30024F854 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
+		F1A351B22AFC36A30024F854 /* MainPageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageContainerView.swift; sourceTree = "<group>"; };
 		F1A351B42AFC36A50024F854 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1A351B72AFC36A50024F854 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F1A351BD2AFC36A50024F854 /* FetchDessertsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchDessertsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,7 +167,7 @@
 		F1A351E52AFC7BD70024F854 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F1A351B22AFC36A30024F854 /* MainPageView.swift */,
+				F1A351B22AFC36A30024F854 /* MainPageContainerView.swift */,
 				F1A351E92AFC82160024F854 /* DessertsFeedView.swift */,
 				F1A351EB2AFC83C10024F854 /* DessertPreviewView.swift */,
 			);
@@ -320,7 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A351B32AFC36A30024F854 /* MainPageView.swift in Sources */,
+				F1A351B32AFC36A30024F854 /* MainPageContainerView.swift in Sources */,
 				F1A351EC2AFC83C10024F854 /* DessertPreviewView.swift in Sources */,
 				F1A351B12AFC36A30024F854 /* FetchDessertsApp.swift in Sources */,
 				F1A351E02AFC3A680024F854 /* Dessert.swift in Sources */,
