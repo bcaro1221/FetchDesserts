@@ -56,11 +56,10 @@ struct Dessert: DessertType {
         self.areaOfOrigin = try container.decode(String.self, forKey: .areaOfOrigin)
         self.instructions = try container.decode(String.self, forKey: .instructions)
         
-        
-        
         var ingredients: [String] = []
         for i in 1..<21 {
-            var currentIngredient: String = try container.decode(String.self, forKey: CodingKeys(stringValue: "strIngredient\(i)")!)
+            let key = CodingKeys(stringValue: "strIngredient\(i)")!
+            let currentIngredient: String = try container.decode(String.self, forKey: key)
             if currentIngredient == "" {
                 break
             }
@@ -71,7 +70,8 @@ struct Dessert: DessertType {
         
         var measurements: [String] = []
         for i in 1..<21 {
-            var currentMeasurement: String = try container.decode(String.self, forKey: CodingKeys(stringValue: "strMeasure\(i)")!)
+            let key = CodingKeys(stringValue: "strMeasure\(i)")!
+            let currentMeasurement: String = try container.decode(String.self, forKey: key)
             if currentMeasurement == "" {
                 break
             }
@@ -90,6 +90,12 @@ struct Dessert: DessertType {
         case instructions = "strInstructions"
         case areaOfOrigin = "strArea"
         case ingredients, measurements
+        
+        // TODO: Currently looking in to ways to create these programatically rather than having to explicitly create each one
+        case strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strIngredient16, strIngredient17, strIngredient18, strIngredient19, strIngredient20
+        
+        case strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15, strMeasure16, strMeasure17, strMeasure18, strMeasure19, strMeasure20
+        
     }
 }
 

@@ -17,13 +17,56 @@ final class FetchDessertsTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    private func getDessertPreviewTestData() -> Data {
+        let bundle = Bundle(for: type(of: self))
+        
+        guard let url = bundle.url(forResource: "testDessertPreviewsData", withExtension: "json") else {
+            fatalError("[-][FetchDessertsTests] Failed loading Dessert Previews Test Data")
+        }
+        
+        return try! Data(contentsOf: url)
+    }
+    
+    private func getDessertTestData() -> Data {
+        let bundle = Bundle(for: type(of: self))
+        
+        guard let url = bundle.url(forResource: "testDessertData", withExtension: "json") else {
+            fatalError("[-][FetchDessertsTests] Failed loading Dessert Test Data")
+        }
+        
+        return try! Data(contentsOf: url)
+    }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testDessertPreviewsParsing() throws {
+        let data = getDessertPreviewTestData()
+        
+        do {
+            _ = try JSONDecoder().decode(DessertsResult<DessertPreview>.self, from: data)
+        } catch {
+            XCTFail("[-][FetchDessertsTests] Failed decoding data in to Dessert Previews Data: \(error)")
+        }
+    }
+    
+    func testDessertParsing() throws {
+        let data = getDessertTestData()
+        
+        do {
+            _ = try JSONDecoder().decode(DessertsResult<Dessert>.self, from: data)
+        } catch {
+            XCTFail("[-][FetchDessertsTests] Failed decoding data in to Dessert Data: \(error)")
+        }
+    }
+    
+    func testFetchData() async throws {
+        let repository = DessertsRepository()
+        
+        do {
+            let _ = try await repository.fetchDessertPreviews()
+            let _ = try await repository.fetchDessert(for: Dessert.testDessert.id)
+        } catch {
+            XCTFail("[-][FetchDessertsTests] Failed fetching data from endpoint: \(error)")
+        }
     }
 
     func testPerformanceExample() throws {
