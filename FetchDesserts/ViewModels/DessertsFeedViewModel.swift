@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class DessertsFeedViewModel: ObservableObject {
     @Published var feed: [DessertPreview] = []
     @Published var isLoading: Bool = false

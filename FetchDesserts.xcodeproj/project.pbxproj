@@ -196,6 +196,8 @@
 			dependencies = (
 			);
 			name = FetchDesserts;
+			packageProductDependencies = (
+			);
 			productName = FetchDesserts;
 			productReference = F1A351AD2AFC36A30024F854 /* FetchDesserts.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +270,8 @@
 				Base,
 			);
 			mainGroup = F1A351A42AFC36A30024F854;
+			packageReferences = (
+			);
 			productRefGroup = F1A351AE2AFC36A30024F854 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
