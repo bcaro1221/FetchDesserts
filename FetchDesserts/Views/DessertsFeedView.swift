@@ -13,20 +13,29 @@ struct DessertsFeedView: View {
     @State var dessertViewModel: DessertViewModel?
     
     var body: some View {
-        ZStack(alignment: .leading) {
+        ZStack {
             Color.blue
                 .ignoresSafeArea()
             VStack(alignment: .leading) {
                 Spacer()
-                Text("Fetch Desserts!")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
+                Group {
+                    Image(systemName: "birthday.cake")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                    Text("Fetch Desserts!")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                }
+                .foregroundColor(.white)
+                .shadow(radius: 1)
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
                         ForEach(feedViewModel.feed) { dessertPreview in
                             DessertPreviewView(dessertPreview: dessertPreview)
-                                .frame(width: 200, height: 250)
-                                .padding(.horizontal, 1)
+                                .frame(maxWidth: 300)
+                                .padding(1)
                                 .onTapGesture {
                                     self.dessertViewModel = DessertViewModel(
                                         withRepository: DessertsRepository(),
@@ -36,7 +45,8 @@ struct DessertsFeedView: View {
                         }
                     }
                 }
-                .frame(maxHeight: 400)
+                .frame(maxHeight: 300)
+                Spacer()
             }
             .padding(.horizontal)
         }
@@ -45,16 +55,21 @@ struct DessertsFeedView: View {
         }
         .fullScreenCover(item: $dessertViewModel) { viewModel in
             VStack {
-                Text("\(viewModel.id)")
+                DessertView(dessertViewModel: viewModel)
                 Button {
                     self.dessertViewModel = nil
                 } label: {
                     Text("Dismiss")
+                        .foregroundStyle(.white)
                 }
+                .padding(.horizontal, 48)
+                .padding(.vertical, 12)
+                .background(.blue)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-                .onAppear {
-                    viewModel.loadDessert()
-                }
+            .onAppear {
+                viewModel.loadDessert()
+            }
         }
     }
 }
