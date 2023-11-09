@@ -14,10 +14,9 @@ struct DessertsFeedView: View {
     
     var body: some View {
         ZStack {
-            Color.blue
-                .ignoresSafeArea()
             VStack(alignment: .leading) {
                 Spacer()
+                
                 Group {
                     Image(systemName: "birthday.cake")
                         .resizable()
@@ -25,10 +24,12 @@ struct DessertsFeedView: View {
                         .frame(width: 50)
                     Text("Fetch Desserts!")
                         .font(.largeTitle)
-                        .fontWeight(.heavy)
+                        .fontWeight(.semibold)
                 }
-                .foregroundColor(.white)
-                .shadow(radius: 1)
+                .foregroundColor(.blue)
+                .shadow(radius: 0.2)
+                
+                Spacer()
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
@@ -36,6 +37,7 @@ struct DessertsFeedView: View {
                             DessertPreviewView(dessertPreview: dessertPreview)
                                 .frame(maxWidth: 300)
                                 .padding(1)
+                                .shadow(radius: 0.2)
                                 .onTapGesture {
                                     self.dessertViewModel = DessertViewModel(
                                         withRepository: DessertsRepository(),
@@ -55,17 +57,9 @@ struct DessertsFeedView: View {
         }
         .fullScreenCover(item: $dessertViewModel) { viewModel in
             VStack {
-                DessertView(dessertViewModel: viewModel)
-                Button {
+                DessertView(dessertViewModel: viewModel) {
                     self.dessertViewModel = nil
-                } label: {
-                    Text("Dismiss")
-                        .foregroundStyle(.white)
                 }
-                .padding(.horizontal, 48)
-                .padding(.vertical, 12)
-                .background(.blue)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .onAppear {
                 viewModel.loadDessert()

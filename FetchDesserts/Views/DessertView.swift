@@ -10,8 +10,10 @@ import SwiftUI
 struct DessertView: View {
     @StateObject var dessertViewModel: DessertViewModel
     
+    let dismissAction: () -> Void
+    
     var body: some View {
-        Group {
+        ZStack(alignment: .topLeading) {
             if dessertViewModel.isLoading {
                 ProgressView()
                     .padding()
@@ -59,6 +61,16 @@ struct DessertView: View {
                 // TODO: This is either the error state or the empty state, implement a way to distinguish and handle error better
                 Color.clear
             }
+            
+            Button(action: dismissAction, label: {
+                Image(systemName: "arrow.left")
+                    .foregroundColor(.black)
+                    .padding()
+            })
+            .background(.white)
+            .clipShape(Circle())
+            .padding()
+            .opacity(0.8)
         }
         .onAppear {
             dessertViewModel.loadDessert()
@@ -71,7 +83,6 @@ struct DessertView: View {
         Color.blue
             .ignoresSafeArea()
         DessertView(
-            dessertViewModel: DessertViewModel(withRepository: DessertsRepository(), id: Dessert.testDessert.id)
-        )
+            dessertViewModel: DessertViewModel(withRepository: DessertsRepository(), id: Dessert.testDessert.id)) {}
     }
 }

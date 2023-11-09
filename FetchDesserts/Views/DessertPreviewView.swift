@@ -11,7 +11,7 @@ struct DessertPreviewView: View {
     let dessertPreview: DessertPreview
     
     var body: some View {
-        VStack {
+        ZStack(alignment: .bottomLeading) {
             
             // TODO: Find a suitable replacement library for Async Images
             AsyncImage(url: dessertPreview.url) { phase in
@@ -24,23 +24,25 @@ struct DessertPreviewView: View {
                     ProgressView()
                         .padding()
                 } else {
-                    Image(systemName: "photo")
+                    // TODO: Implement more robust error handling
+                    Color.blue
                 }
             }
             
             Text(dessertPreview.title)
-                .font(.caption)
+                .font(.largeTitle)
                 .fontWeight(.bold)
+                .foregroundStyle(.white)
+                .shadow(radius: 1)
                 .padding()
         }
-        .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 #Preview {
     ZStack {
-        Color.blue
+        Color.clear
             .ignoresSafeArea()
         DessertPreviewView(dessertPreview: DessertPreview.testDessertPreview)
     }
