@@ -19,16 +19,16 @@ struct DessertsFeedView: View {
             }
         }
         .padding()
+        .onAppear {
+            viewModel.loadDessertsFeed()
+        }
     }
 }
 
 #Preview {
-    let viewModel = DessertsFeedViewModel (
-        withRepository: DessertsRepository()
-    )
-    viewModel.loadDessertsFeed()
-    
-    return DessertsFeedView(
-        viewModel: viewModel
+    DessertsFeedView(
+        viewModel: DessertsFeedViewModel (
+            withRepository: DessertsRepository()
+        )
     )
 }

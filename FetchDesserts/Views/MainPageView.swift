@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct MainPageView: View {
-    var viewModel = DessertsFeedViewModel(
-        withRepository: DessertsRepository()
-    )
     
     var body: some View {
         VStack {
-            DessertsFeedView(viewModel: viewModel)
-        }
-        .onAppear {
-            viewModel.loadDessertsFeed()
+            DessertsFeedView(
+                viewModel: DessertsFeedViewModel(
+                withRepository: DessertsRepository()
+            ))
         }
     }
 }
