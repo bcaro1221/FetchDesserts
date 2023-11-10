@@ -19,7 +19,7 @@ struct DessertsRepository: DessertsRepositoryProtocol {
         async let (data, _) = URLSession.shared.data(from: url)
         
         let dessertsResult = try await JSONDecoder().decode(DessertsResult<DessertPreview>.self, from: data)
-        return dessertsResult.meals
+        return dessertsResult.meals.sorted()
     }
     
     func fetchDessert(for id: String) async throws -> Dessert {

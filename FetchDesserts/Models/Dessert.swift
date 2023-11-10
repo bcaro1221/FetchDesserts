@@ -13,7 +13,7 @@ protocol DessertType: Decodable, Identifiable {
     var url: URL? { get }
 }
 
-struct DessertPreview: DessertType {
+struct DessertPreview: DessertType, Comparable {
     var id: String
     var title: String
     var url: URL?
@@ -29,6 +29,12 @@ struct DessertPreview: DessertType {
         case id = "idMeal"
         case title = "strMeal"
         case url = "strMealThumb"
+    }
+    
+    // MARK: Comparable
+    
+    static func < (lhs: DessertPreview, rhs: DessertPreview) -> Bool {
+        lhs.title < rhs.title
     }
 }
 
