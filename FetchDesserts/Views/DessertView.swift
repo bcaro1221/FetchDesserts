@@ -46,11 +46,10 @@ struct DessertView: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            
                             Text("Ingredients")
                                 .font(.title2)
                                 .fontWeight(.bold)
-                                .padding(.vertical, 20)
+                                .padding(.vertical, 10)
                             
                             ForEach(0..<dessert.ingredients.count, id: \.self) { index in
                                 IngredientItemView(ingredient: dessert.ingredients[index], measurement: dessert.measurements[index])
@@ -59,18 +58,25 @@ struct DessertView: View {
                             Text("Instructions")
                                 .font(.title2)
                                 .fontWeight(.bold)
-                                .padding(.vertical, 20)
+                                .padding(.vertical, 10)
                             
                             
                             Text(dessert.instructions)
-                                .padding(.horizontal)
+                                .font(.caption)
+                                .padding()
+                                .background(.gray.opacity(0.2))
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 20)
+                                )
+                                .padding(5)
                         }
                         .padding(.horizontal)
                     }
                 }
             } else {
                 // TODO: This is either the error state or the empty state, implement a way to distinguish and handle error better
-                Color.clear
+                Text("Unable to load data")
+                    .font(.title)
             }
             
             HStack {
@@ -84,7 +90,7 @@ struct DessertView: View {
                 })
                 .background(.blue)
                 .clipShape(Circle())
-                .padding(8)
+                .padding(6)
                 .opacity(0.8)
             }
             
@@ -103,13 +109,15 @@ extension DessertView {
         var body: some View {
             HStack {
                 Text(ingredient)
+                    .font(.caption)
                 Spacer()
                 Text(measurement)
+                    .font(.caption)
             }
             .padding()
             .background(.gray.opacity(0.2))
             .clipShape(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 12)
             )
             .padding(5)
         }
