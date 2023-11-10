@@ -53,7 +53,7 @@ struct DessertsFeedView: View {
             // TODO: Seems like sheets/fullscreencovers are currently causing issues with memory (See https://developer.apple.com/forums/thread/738840). Look for a work around that resolves this issue.
             DessertView(
                 dessertViewModel: DessertViewModel(
-                    withRepository: DessertsRepository(),
+                    withRepository: feedViewModel.repository,
                     id: id
                 )
             ) {
