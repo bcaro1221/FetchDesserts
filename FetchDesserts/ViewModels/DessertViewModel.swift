@@ -22,8 +22,8 @@ class DessertViewModel: ObservableObject, Identifiable {
     }
     
     func loadDessert() {
-        Task {
-            await fetchDessert()
+        Task { [weak self] in
+            await self?.fetchDessert()
         }
     }
     

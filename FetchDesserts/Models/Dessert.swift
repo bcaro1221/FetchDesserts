@@ -37,9 +37,7 @@ struct Dessert: DessertType {
     var title: String
     var url: URL?
     
-    var source: URL?
     var video: URL?
-    var areaOfOrigin: String
     var instructions: String
     
     var ingredients: [String]
@@ -51,9 +49,7 @@ struct Dessert: DessertType {
         self.title = try container.decode(String.self, forKey: .title)
         self.url = try container.decode(URL.self, forKey: .url)
         
-        self.source = try container.decode(URL.self, forKey: .source)
         self.video = try container.decode(URL.self, forKey: .video)
-        self.areaOfOrigin = try container.decode(String.self, forKey: .areaOfOrigin)
         self.instructions = try container.decode(String.self, forKey: .instructions)
         
         var ingredients: [String] = []
@@ -85,10 +81,8 @@ struct Dessert: DessertType {
         case id = "idMeal"
         case title = "strMeal"
         case url = "strMealThumb"
-        case source = "strSource"
         case video = "strYoutube"
         case instructions = "strInstructions"
-        case areaOfOrigin = "strArea"
         case ingredients, measurements
         
         // TODO: Currently looking in to ways to create these programatically rather than having to explicitly create each one
@@ -119,13 +113,11 @@ extension DessertPreview {
 }
 
 extension Dessert {
-    init(id: String, title: String, url: String, source: String, video: String, areaOfOrigin: String, instructions: String, ingredients: [String], measurements: [String]) {
+    init(id: String, title: String, url: String, video: String, instructions: String, ingredients: [String], measurements: [String]) {
         self.id = id
         self.title = title
         self.url = URL(string: url)
-        self.source = URL(string:source)
         self.video = URL(string:video)
-        self.areaOfOrigin = areaOfOrigin
         self.instructions = instructions
         self.ingredients = ingredients
         self.measurements = measurements
@@ -135,9 +127,7 @@ extension Dessert {
         id: "53046",
         title: "Portuguese custard tarts",
         url: "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg",
-        source:"https://www.olivemagazine.com/recipes/baking-and-desserts/portuguese-custard-tarts/",
         video: "https://www.youtube.com/watch?v=lWLCxui1Mw8",
-        areaOfOrigin: "Portuguese",
         instructions: """
              STEP 1
              Roll the pastry

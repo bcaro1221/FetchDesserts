@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct DessertView: View {
     @StateObject var dessertViewModel: DessertViewModel
@@ -27,7 +28,7 @@ struct DessertView: View {
                         .padding()
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        AsyncImage(url: dessert.url) { phase in
+                        LazyImage(url: dessert.url) { phase in
                             if let image = phase.image {
                                 image
                                     .resizable()
@@ -79,20 +80,20 @@ struct DessertView: View {
                     .font(.title)
             }
             
-            HStack {
-                Button(action: dismissAction, label: {
-                    Image(systemName: "arrow.left")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 15)
-                        .foregroundColor(.white)
-                        .padding(13)
-                })
-                .background(.blue)
-                .clipShape(Circle())
-                .padding(6)
-                .opacity(0.8)
+            Button {
+                dismissAction()
+            } label: {
+                Image(systemName: "arrow.left")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 15)
+                    .foregroundColor(.white)
+                    .padding(13)
             }
+            .background(.blue)
+            .clipShape(Circle())
+            .padding(6)
+            .opacity(0.8)
             
         }
         .onAppear {

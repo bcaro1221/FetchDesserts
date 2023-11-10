@@ -10,7 +10,7 @@ import SwiftUI
 struct DessertsFeedView: View {
     @StateObject var feedViewModel: DessertsFeedViewModel
     
-    @State var dessertViewModel: DessertViewModel?
+    @State var presentingDessertId: String?
     
     var body: some View {
         ZStack {
@@ -39,10 +39,7 @@ struct DessertsFeedView: View {
                                 .padding(1)
                                 .shadow(radius: 0.2)
                                 .onTapGesture {
-                                    self.dessertViewModel = DessertViewModel(
-                                        withRepository: DessertsRepository(),
-                                        id: dessertPreview.id
-                                    )
+                                    self.presentingDessertId = dessertPreview.id
                                 }
                         }
                     }
@@ -52,16 +49,23 @@ struct DessertsFeedView: View {
         .onAppear {
             feedViewModel.loadDessertsFeed()
         }
-        .fullScreenCover(item: $dessertViewModel) { viewModel in
-            VStack {
-                DessertView(dessertViewModel: viewModel) {
-                    self.dessertViewModel = nil
-                }
-            }
-            .onAppear {
-                viewModel.loadDessert()
+        .fullScreenCover(item: $presentingDessertId) { id in
+            // TODO: Seems like sheets/fullscreencovers are currently causing issues with memory (See https://developer.apple.com/forums/thread/738840). Look for a work around that resolves this issue.
+            DessertView(
+                dessertViewModel: DessertViewModel(
+                    withRepository: DessertsRepository(),
+                    id: id
+                )
+            ) {
+                self.presentingDessertId = nil
             }
         }
+    }
+}
+
+extension String: Identifiable {
+    public var id: String {
+        self
     }
 }
 

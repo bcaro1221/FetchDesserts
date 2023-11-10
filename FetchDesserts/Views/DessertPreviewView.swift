@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct DessertPreviewView: View {
     let dessertPreview: DessertPreview
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            
-            // TODO: Find a suitable replacement library for Async Images
-            AsyncImage(url: dessertPreview.url) { phase in
+            LazyImage(url: dessertPreview.url) { phase in
                 if let image = phase.image {
                     image
                         .resizable()

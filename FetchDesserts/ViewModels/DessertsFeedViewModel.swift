@@ -19,8 +19,8 @@ class DessertsFeedViewModel: ObservableObject {
     }
     
     func loadDessertsFeed() {
-        Task {
-            await fetchDessertsFeed()
+        Task { [weak self] in
+            await self?.fetchDessertsFeed()
         }
     }
     
