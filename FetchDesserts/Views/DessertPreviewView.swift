@@ -29,7 +29,7 @@ struct DessertPreviewView: View {
                 }
             }
             
-            Text(dessertPreview.title)
+            Text(dessertPreview.title.capitalized)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundStyle(.white)

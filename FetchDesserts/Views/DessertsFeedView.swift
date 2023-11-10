@@ -15,27 +15,27 @@ struct DessertsFeedView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Spacer()
-                
-                Group {
-                    Image(systemName: "birthday.cake")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50)
-                    Text("Fetch Desserts!")
-                        .font(.largeTitle)
-                        .fontWeight(.semibold)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Image(systemName: "birthday.cake")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50)
+                        Text("Fetch Desserts!")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                    }
+                    
+                    Spacer()
                 }
+                .padding()
                 .foregroundColor(.blue)
-                .shadow(radius: 0.2)
                 
-                Spacer()
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack {
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack {   
                         ForEach(feedViewModel.feed) { dessertPreview in
                             DessertPreviewView(dessertPreview: dessertPreview)
-                                .frame(maxWidth: 300)
+                                .frame(maxWidth: 350)
                                 .padding(1)
                                 .shadow(radius: 0.2)
                                 .onTapGesture {
@@ -47,10 +47,7 @@ struct DessertsFeedView: View {
                         }
                     }
                 }
-                .frame(maxHeight: 300)
-                Spacer()
             }
-            .padding(.horizontal)
         }
         .onAppear {
             feedViewModel.loadDessertsFeed()
