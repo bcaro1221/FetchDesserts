@@ -13,35 +13,33 @@ struct DessertsFeedView: View {
     @State var presentingDessertId: String?
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Image(systemName: "birthday.cake")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50)
-                        Text("Fetch Desserts!")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                    }
-                    
-                    Spacer()
+        VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Image(systemName: "birthday.cake")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                    Text("Fetch Desserts!")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
                 }
-                .padding()
-                .foregroundColor(.blue)
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    LazyVStack {   
-                        ForEach(feedViewModel.feed) { dessertPreview in
-                            DessertPreviewView(dessertPreview: dessertPreview)
-                                .frame(maxWidth: 350)
-                                .padding(1)
-                                .shadow(radius: 0.2)
-                                .onTapGesture {
-                                    self.presentingDessertId = dessertPreview.id
-                                }
-                        }
+                Spacer()
+            }
+            .padding()
+            .foregroundColor(.blue)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack {
+                    ForEach(feedViewModel.feed) { dessertPreview in
+                        DessertPreviewView(dessertPreview: dessertPreview)
+                            .frame(maxWidth: 350)
+                            .padding(1)
+                            .shadow(radius: 0.2)
+                            .onTapGesture {
+                                self.presentingDessertId = dessertPreview.id
+                            }
                     }
                 }
             }

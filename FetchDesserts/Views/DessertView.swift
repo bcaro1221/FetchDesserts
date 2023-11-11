@@ -10,7 +10,6 @@ import NukeUI
 
 struct DessertView: View {
     @StateObject var dessertViewModel: DessertViewModel
-    
     let dismissAction: () -> Void
     
     var body: some View {
@@ -18,7 +17,7 @@ struct DessertView: View {
             if dessertViewModel.isLoading {
                 ProgressView()
                     .padding()
-            } else if let dessert = dessertViewModel.dessert, false {
+            } else if let dessert = dessertViewModel.dessert {
                 VStack {
                     Text(dessert.title.capitalized)
                         .font(.title3)
@@ -81,28 +80,7 @@ struct DessertView: View {
                     .font(.title)
             }
             
-            VStack {
-                HStack {
-                    Button {
-                        dismissAction()
-                    } label: {
-                        Image(systemName: "arrow.left")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(.white)
-                            .padding(8)
-                    }
-                    .background(.blue)
-                    .clipShape(Circle())
-                    .opacity(0.8)
-                    .accessibilityIdentifier("backButton")
-                    .frame(maxWidth: 30)
-                    .padding()
-                    
-                    Spacer()
-                }
-                Spacer()
-            }
+            BackButton(dismissAction: dismissAction)
         }
         .onAppear {
             dessertViewModel.loadDessert()
@@ -129,6 +107,35 @@ extension DessertView {
                 RoundedRectangle(cornerRadius: 12)
             )
             .padding(5)
+        }
+    }
+    
+    struct BackButton: View {
+        let dismissAction: () -> Void
+        
+        var body: some View {
+            VStack {
+                HStack {
+                    Button {
+                        dismissAction()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                            .padding(8)
+                    }
+                    .background(.blue)
+                    .clipShape(Circle())
+                    .opacity(0.8)
+                    .accessibilityIdentifier("backButton")
+                    .frame(maxWidth: 30)
+                    .padding()
+                    
+                    Spacer()
+                }
+                Spacer()
+            }
         }
     }
 }
