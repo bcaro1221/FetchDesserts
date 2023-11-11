@@ -12,12 +12,10 @@ struct MainPageContainerView: View {
     let repository: DessertsRepositoryProtocol = ProcessInfo.processInfo.arguments.contains("Testing") ? DessertsRepositoryStub() : DessertsRepository()
     
     var body: some View {
-        VStack {
-            DessertsFeedView(
-                feedViewModel: DessertsFeedViewModel(
-                withRepository: repository
-            ))
-        }
+        DessertsFeedView(
+            feedViewModel: DessertsFeedViewModel(
+            withRepository: repository
+        ))
     }
 }
 
