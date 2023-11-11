@@ -13,7 +13,7 @@ struct DessertPreviewView: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            LazyImage(url: nil) { phase in
+            LazyImage(url: dessertPreview.url) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
