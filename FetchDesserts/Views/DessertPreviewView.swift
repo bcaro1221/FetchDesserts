@@ -19,6 +19,7 @@ struct DessertPreviewView: View {
                         .resizable()
                         .scaledToFit()
                         .clipped()
+                        .accessibilityIdentifier("dessertPreviewImage")
                 } else if phase.error == nil {
                     ProgressView()
                         .padding()
@@ -34,6 +35,7 @@ struct DessertPreviewView: View {
                 .foregroundStyle(.white)
                 .shadow(radius: 1)
                 .padding()
+                .accessibilityIdentifier("dessertPreviewTitle")
         }
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }

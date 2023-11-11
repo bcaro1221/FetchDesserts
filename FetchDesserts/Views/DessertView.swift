@@ -26,6 +26,7 @@ struct DessertView: View {
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: 300)
                         .padding()
+                        .accessibilityIdentifier("dessertTitleText")
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyImage(url: dessert.url) { phase in
@@ -38,6 +39,7 @@ struct DessertView: View {
                                         RoundedRectangle(cornerRadius: 20)
                                     )
                                     .clipped()
+                                    .accessibilityIdentifier("dessertImage")
                             } else if phase.error == nil {
                                 ProgressView()
                                     .padding()
@@ -94,6 +96,7 @@ struct DessertView: View {
             .clipShape(Circle())
             .padding(6)
             .opacity(0.8)
+            .accessibilityIdentifier("backButton")
             
         }
         .onAppear {

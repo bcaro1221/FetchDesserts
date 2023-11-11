@@ -22,12 +22,37 @@ final class FetchDessertsUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testDessertPreviewView() throws {
         let app = XCUIApplication()
+        app.launchArguments.append("Testing")
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let elementsQuery = app.scrollViews.otherElements
+        XCTAssert(elementsQuery.staticTexts["Portuguese Custard Tarts"].waitForExistence(timeout: 3), "[-][FetchDessertsUITests][testDessertPreviewView] Title for dessert preview element does not exist")
+        XCTAssert(elementsQuery.images["dessertPreviewImage"].waitForExistence(timeout: 2), "[-][FetchDessertsUITests][testDessertPreviewView] Unable to load preview image for feed item")
+    }
+    
+    func testDessertViewLoading() throws {
+        let app = XCUIApplication()
+        app.launchArguments.append("Testing")
+        app.launch()
+
+        let elementsQuery = app.scrollViews.otherElements
+        
+        // Enter in to Dessert View
+        elementsQuery.staticTexts["Portuguese Custard Tarts"].tap()
+        
+        // Check whether elements have properly loaded in to view
+        XCTAssert(elementsQuery.staticTexts["Portuguese Custard Tarts"].waitForExistence(timeout: 3), "[-][FetchDessertsUITests][testDessertView] Title for dessert element does not exist")
+        
+        let dessertImage = elementsQuery.images["dessertImage"]
+        XCTAssert(dessertImage.waitForExistence(timeout: 2), "[-][FetchDessertsUITests][testDessertView] Failed loading dessert view image")
+        
+        // Dismiss dessert view and ensure feed is still loaded
+        app/*@START_MENU_TOKEN@*/.buttons["backButton"]/*[[".buttons[\"Left\"]",".buttons[\"backButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssert(elementsQuery.staticTexts["Portuguese Custard Tarts"].waitForExistence(timeout: 3), "[-][FetchDessertsUITests][testDessertView] Title for dessert preview element does not exist")
+        XCTAssert(app.scrollViews.otherElements.images["dessertPreviewImage"].waitForExistence(timeout: 2), "[-][FetchDessertsUITests][testDessertView] Unable to load preview image for feed item")
     }
 
     func testLaunchPerformance() throws {
