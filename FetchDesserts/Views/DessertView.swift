@@ -14,11 +14,11 @@ struct DessertView: View {
     let dismissAction: () -> Void
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack {
             if dessertViewModel.isLoading {
                 ProgressView()
                     .padding()
-            } else if let dessert = dessertViewModel.dessert {
+            } else if let dessert = dessertViewModel.dessert, false {
                 VStack {
                     Text(dessert.title.capitalized)
                         .font(.title3)
@@ -77,27 +77,32 @@ struct DessertView: View {
                     }
                 }
             } else {
-                // TODO: This is either the error state or the empty state, implement a way to distinguish and handle error better
                 Text("Unable to load data")
                     .font(.title)
             }
             
-            Button {
-                dismissAction()
-            } label: {
-                Image(systemName: "arrow.left")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 15)
-                    .foregroundColor(.white)
-                    .padding(13)
+            VStack {
+                HStack {
+                    Button {
+                        dismissAction()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                            .padding(8)
+                    }
+                    .background(.blue)
+                    .clipShape(Circle())
+                    .opacity(0.8)
+                    .accessibilityIdentifier("backButton")
+                    .frame(maxWidth: 30)
+                    .padding()
+                    
+                    Spacer()
+                }
+                Spacer()
             }
-            .background(.blue)
-            .clipShape(Circle())
-            .padding(6)
-            .opacity(0.8)
-            .accessibilityIdentifier("backButton")
-            
         }
         .onAppear {
             dessertViewModel.loadDessert()
