@@ -13,7 +13,7 @@ struct DessertPreviewView: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            LazyImage(url: dessertPreview.url) { phase in
+            LazyImage(url: nil) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
@@ -24,7 +24,6 @@ struct DessertPreviewView: View {
                     ProgressView()
                         .padding()
                 } else {
-                    // TODO: Implement more robust error handling
                     Color.blue
                 }
             }
